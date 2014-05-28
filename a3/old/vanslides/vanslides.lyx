@@ -1,0 +1,505 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Modeling process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Number of words (V), number of topics (K)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename piclol.svg
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Admixture model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Task
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\size huge
+The learning task is to find the word-topic matrix A with the statistical
+ model above.
+ This is the essence of statistical recovery.
+ They also show how to learn the hyperparameters of the topic distribution
+ when it is a Dirichlet distribution
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Word-topic matrix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Kristy's slide goes here
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Topic recovery using Bayes' Rule
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Mathematical prerequisites
+\end_layout
+
+\begin_layout Itemize
+For any two words 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+and 
+\begin_inset Formula $w_{2}$
+\end_inset
+
+ with respective topic assignments 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $z_{2}$
+\end_inset
+
+ the elements of the word-topic matrix can be interpreted as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A_{i,k}=p(w_{1}=i\,|z_{1}=k)$
+\end_inset
+
+
+\begin_inset Formula $ $
+\end_inset
+
+ (1)
+\end_layout
+
+\begin_layout Standard
+The A matrix gives probability of word in the ith row given a topic k (column)
+\end_layout
+
+\begin_layout Itemize
+Word co-occurences
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Q 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ measures joint probability of words occuring together
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Q_{i,j}=p(w_{1}=i,w_{2}=j)$
+\end_inset
+
+ (2)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bar{Q}_{i,j}=p(w_{2}=j|w_{1}=i$
+\end_inset
+
+) (3)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Topic recovery using Bayes' Rule
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Convex Hull I
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pic2.svg
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Topic recovery using Bayes' Rule
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Convex Hull II
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename convexhull.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Convex Hull
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using this geometric simplification, we can determine the relevant probabilities
+ to allow us to use Bayes' Rule in the end.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(w_{1}=i|z_{1}=k)=\frac{p(z_{1}=k|w_{1}=i)p(w_{1}=i)}{\sum_{i}p(z_{1}=k|w_{1}=i')p(w_{1}=i')}\,\,\,\,\,(4)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Anchor words
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Finding anchor words
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename convexhull.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Convex Hull
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Previous algorithm: tests whether each of the V points is a vertex of the
+ convex hull (and thus an anchor word) using the linear programming technique
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Inefficient
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Anchor words
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Efficient algorithm
+\end_layout
+
+\begin_layout Itemize
+Iterative algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Finds farthest point from subspace spanned by anchor words so far
+\end_layout
+
+\begin_layout Itemize
+Farthest point will be the new anchor word
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Finds anchor word most different from the ones found so far
+\end_layout
+
+\begin_layout Itemize
+Terminates when it has found K anchor (K is input to algorithm, # topics)
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
