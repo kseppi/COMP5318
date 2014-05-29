@@ -43,10 +43,16 @@ The approach to topic modelling assumes that each document was generated using t
 Algorithm
 ---------
 
-- Overview -
+- Algorithm -
 This paper is based off the algorithm the authors wrote in 2012. The algorithm takes the second order moment matrix of word-word co-occurrences as the input. It then finds anchor words for each topic and uses them to reconstruct topic distributions.
 This paper changes how the anchor words are found and the topics are recovered in order to make it run in polynomial time.
 
 - Contributions -
 The contributions this paper makes to the field are incremental - it changes the mechanisms used in an existing algorithm to increase speed and stability. It inherits the provable guarantees of their previous paper but uses simple and practical implementation. In summary, this paper moves away from solving integer linear programs in the anchor selection phase, using a combinatorial approach instead. It also uses gradient-based inference as opposed to using matrix inversion for computing topic-word distributions.
+
+Anchor Selection
+----------------
+
+
+
 
