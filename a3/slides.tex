@@ -246,24 +246,18 @@ Assumptions:
 \begin{plain}{Computing Convex Hull}
 \begin{itemize}
 \item Efficient for 2 dimensions - O($n\log{n}$)
-\item Inefficient for $n>2$ dimensions - O(TODO)
-\end{itemize}
-\end{plain}
-
-\begin{plain}{Previous method}
-\begin{itemize}
-\item Solve linear program for each word
-\item TODO: More details
-\end{itemize}
-\end{plain}
-
-\begin{plain}{New method}
+\item Inefficient for $n>2$ dimensions
+\item Complexity depends on method and approximation used
+\item Previous method: ILP
+\item New method: Recursive greedy
 \begin{enumerate}
 \item Compute subspace span of current convex hull
 \item Find point furthest from this sub-span
 \item Add point to convex hull
 \item Repeat until $K$ points found
 \end{enumerate}
+\end{itemize}
+TODO: Work out how the whole convex hull - words as vertices work. I think what we have here is wrong because there is no approximation
 \end{plain}
 
 %-------------------------------------------------%
