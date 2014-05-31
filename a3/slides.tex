@@ -262,25 +262,34 @@ TODO: Work out how the whole convex hull - words as vertices work. I think what 
 
 %-------------------------------------------------%
 \section[Topic Recovery]{Topic Recovery via Bayes' Rule}
-\begin{plain}{Problem}
-TODO: What is topic recovery
+\begin{plain}{Topic Recovery Task}
+\begin{itemize}
+\p Recovers the topics
+\p Represented as topic-word distributions
+\p Topic uniquely identified by anchor word
+\end{itemize}
 \end{plain}
 
 \begin{plain}{Previous method}
-TODO: Overview of approach
+\begin{enumerate}
+\p Discard rows not containing anchor words from word-word co-occurrence matrix (Q)
+\p Permute matrix into a diagonal matrix
+\p We know that $Q=ARA^T$ where $A$ is the word-topic matrix and $R$ is the TODO matrix
+\p Solve $Q = ARA^T$ using matrix inversion
+\end{enumerate}
+TODO: what the hell does R represent?!?!
 \end{plain}
 
-\begin{plain}{Matrix Inversion}
-TODO: How matrix inversion works
-TODO: How this recovered topics
+\begin{plain}{Word-word co-occurrence probability matrix}
+\includegraphics[scale=0.5]{figs/Q}
 \end{plain}
 
 \begin{plain}{New method}
-TODO: Overview of approach
-\end{plain}
-
-\begin{plain}{Bayes' Rule}
-TODO: Bayes rule and how it relates to new method
+\begin{itemize}
+\p Row normalize $Q$ into $\bar{Q}$
+\p Recover $A$ and $R$ using Bayes rule
+\end{itemize}
+$$p(w_1 = i | z_1 = k) = \frac{p(z_1 = k | w_1 = i)p(w_1 = i)}{\sum_i{p(z_1=k | w_1 = i^\prime)p(w_1=i^\prime)}}$$
 \end{plain}
 
 %-------------------------------------------------%

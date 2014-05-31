@@ -63,16 +63,28 @@ TODO: Do you prefer this picture or vertex.jpg
 The set of points that enclose all other points in a convex polyhedron is called the convex hull. On the left we have a 2d convex hull, and on the right we have a 3d convex hull. The convex hull of the plotted words we just described has the same number of dimensions as words. It turns out that the points on the outside are the anchor words. So the method that the authors have presented is to compute the convex hull of the set of points. The points that make up the convex hull are the anchor words.
 TODO: Add stuff about a simplex here
 
-- Previous method -
-TODO
-
-- Current Method -
+- Computing Convex Hull -
+Computing the convex hull of a 2 dimensional point set is efficient, but it is not for a greater number of dimensions. The exact computational complexity depends on the method used. The authors previous paper solved an integer linear program for each point to determine whether or not it is part of the hull. This is not necessarily bounded, let alone polynomial in time. The method proposed in this paper uses a recursive algorithm which is basically a greedy algorithm maximizing the volume of the polytope formed by the points.
 For all iterative algorithms, we need a method of choosing the first point. This is done by randomly projecting the points into a lower dimensional subspace and then choosing the point furthest from the origin. 
 The algorithm iteratively adds a point to the convex hull. Given a set of points that are part of the convex hull, the algorithm computes the subspace span of the points, and then adds the point furthest from this subspace to the convex hull. Each point in the convex hull corresponds to an anchor word, which is like the ID of a topic (since by definition it has 0 probability in all other topics). So the algorithm stops when the specified number of topics (K) is found.
 This approach can also be seen as a greedy approach to maximize the volume
 
 Topic Recovery
 --------------
+
+- Topic Recovery Task -
+The topic recovery step aims to extract the distributions over words for each topic. Since we have found our K anchor words, they act as a unique identifier for each topic. But since topics are defined as distributions of words, we need to find the topic-word distributions.
+
+- Previous Method -
+In the authors previous paper, they performed topic recovery using matrix inversion. They permuted the word-word co-occurrence matrix, Q,  so that the first K rows and columns contain the anchor words and then discard the remaining rows and columns. This produces a diagonal matrix because by definition an anchor word has 0 probability for all other words. They then formulated the relationship between the this matrix, Q, and word topic matrix A and the TODO (What does R represent) R. This equation was solved using matrix inversion
+
+- Word-word co-occurrence probability matrix -
+The new method uses a variation on the word-word co-occurrence matrix, Q. It normalises it into the probability of each word co-occurring. Here, the variable w represents a word and the variable z represents the topic. For an anchor word, this first probability is 1 because the probability is 0 for all other words by definition. So this simplifies to the probability of a word given a topic. But for any other row, this probability isnt 1 so it remains as this equation. Since this is a convex combination of the anchor words, we can simplify it down to this sum instead.
+
+- New Method -
+So now that we have gone through some of the equations we are able to understand the algorithm presented. The authors first normalise the word-word co-occurrence matrix as we just describe. They then compute A and R using Bayes rule
+TODO: expand on this
+
 
 Results
 -------
