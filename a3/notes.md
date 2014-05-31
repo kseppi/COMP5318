@@ -52,7 +52,34 @@ The contributions this paper makes to the field are incremental - it changes the
 
 Anchor Selection
 ----------------
+- Word-word co-occurrence matrix -
+Here we consider the normalised word-word co-occurrence matrix of the document set where each row and column represents a word and the number in each cell represents how many times those pairs of words appear in the same document.
 
+- Words as vertices-
+If we plot each row in V dimensional space, we get a collection of words mapped to points, with the position of the point representing how similar they are to other words. It is a little hard to visualise dimensions higher than 3, but essentially words that relate to similar topics will end up being clustered together, while words that are very dissimilar are also far distance-wise. So using this image, we can see that points on the outside are going to be very significant.
+TODO: Do you prefer this picture or vertex.jpg
 
+- Convex Hull -
+The set of points that enclose all other points in a convex polyhedron is called the convex hull. On the left we have a 2d convex hull, and on the right we have a 3d convex hull. The convex hull of the plotted words we just described has the same number of dimensions as words. It turns out that the points on the outside are the anchor words. So the method that the authors have presented is to compute the convex hull of the set of points. The points that make up the convex hull are the anchor words.
+TODO: Add stuff about a simplex here
 
+- Previous method -
+TODO
 
+- Current Method -
+For all iterative algorithms, we need a method of choosing the first point. This is done by randomly projecting the points into a lower dimensional subspace and then choosing the point furthest from the origin. 
+The algorithm iteratively adds a point to the convex hull. Given a set of points that are part of the convex hull, the algorithm computes the subspace span of the points, and then adds the point furthest from this subspace to the convex hull. Each point in the convex hull corresponds to an anchor word, which is like the ID of a topic (since by definition it has 0 probability in all other topics). So the algorithm stops when the specified number of topics (K) is found.
+This approach can also be seen as a greedy approach to maximize the volume
+
+Topic Recovery
+--------------
+
+Results
+-------
+
+Conclusion
+----------
+
+- Thanks _
+Well thats it. Thanks for listening to our talk. Usually we would ask for questions but since this is a video talk we cant do that. So instead, if you have any questions please feel free to email either of us at our emails we have here.
+Cya!

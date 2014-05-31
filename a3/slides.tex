@@ -224,20 +224,46 @@ Assumptions:
 
 %-------------------------------------------------%
 \section[Anchor Selection]{Efficiently Finding Anchor Words}
+\begin{plain}{Word-word co-occurrence matrix}
+\begin{center}
+\includegraphics[scale=0.7]{figs/word_word}
+\end{center}
+\end{plain}
+
 \begin{plain}{Words as vertices}
-TODO: Explain model of words as vertices. Lead into anchor words being words on the convex hull
+\begin{center}
+\includegraphics[scale=2.1]{figs/vertices2}
+\end{center}
 \end{plain}
 
 \begin{plain}{Convex Hull}
-TODO: Explain how convex hull is computed. give time complexity for higher dimensions. Explain how convex hull "encloses" all the words within. Link aspects of problem to visual aspects
+\begin{tabular}{cc}
+\includegraphics[scale=0.14]{figs/2d_convex_hull2} &
+\includegraphics[scale=0.3]{figs/3d_convex_hull2}
+\end{tabular}
+\end{plain}
+
+\begin{plain}{Computing Convex Hull}
+\begin{itemize}
+\item Efficient for 2 dimensions - O($n\log{n}$)
+\item Inefficient for $n>2$ dimensions - O(TODO)
+\end{itemize}
 \end{plain}
 
 \begin{plain}{Previous method}
-TODO: ILP approach
+\begin{itemize}
+\item Solve linear program for each word
+\item TODO: More details
+\end{itemize}
 \end{plain}
 
 \begin{plain}{New method}
-TODO: Iterative approach
+\begin{enumerate}
+\item Compute subspace span of current convex hull
+\item Find point furthest from this sub-span
+\item Add point to convex hull
+\item Repeat until $K$ points found
+\end{enumerate}
 \end{plain}
 
 %-------------------------------------------------%
