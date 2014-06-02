@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{LI}
 \usepackage{etex}
+\usepackage{times}
 \usepackage{booktabs}
 \usepackage{color}
 \usepackage{latexsym}
@@ -274,10 +275,9 @@ TODO: Work out how the whole convex hull - words as vertices work. I think what 
 \begin{enumerate}
 \p Discard rows not containing anchor words from word-word co-occurrence matrix (Q)
 \p Permute matrix into a diagonal matrix
-\p We know that $Q=ARA^T$ where $A$ is the word-topic matrix and $R$ is the TODO matrix
+\p We know that $Q=ARA^T$ where $A$ is the word-topic matrix and $R$ is the topic-topic matrix
 \p Solve $Q = ARA^T$ using matrix inversion
 \end{enumerate}
-TODO: what the hell does R represent?!?!
 \end{plain}
 
 \begin{plain}{Word-word co-occurrence probability matrix}
@@ -295,37 +295,76 @@ $$p(w_1 = i | z_1 = k) = \frac{p(z_1 = k | w_1 = i)p(w_1 = i)}{\sum_i{p(z_1=k | 
 %-------------------------------------------------%
 \section[Results]{Experimental Results}
 \begin{plain}{Experiments}
-TODO: overview of the experiments run
+\includegraphics[scale=0.5]{figs/results_method}
 \end{plain}
 
 \begin{plain}{Metrics}
-TODO: Metrics
+\begin{itemize}
+\p Ground truth known
+\begin{itemize}
+\p Reconstruction error
+\end{itemize}
+\p Ground truth unknown
+\begin{itemize}
+\p Held out probability - probability of an unseen document under the learned model
+\p Coherence - measure of semantic quality
+\p Inter-topic similarity - measure of uniqueness of topics
+\end{itemize}
+\end{itemize}
+
+
 \end{plain}
 
-\begin{plain}{Documents}
-TODO: Talk about semi-synthetic documents, real documents and the need for both
+%\begin{plain}{Documents}
+%TODO: Talk about semi-synthetic documents, real documents and the need for both
+%\end{plain}
+
+\begin{plain}{Results - Efficiency}
+\centering
+\includegraphics[scale=0.6]{figs/results_fig1}
 \end{plain}
 
-\begin{plain}{Results}
-TODO: describe results. Iterate through each experiment, and each document type, reporting the computed metrics for each. This may need to be split up into more slides by either experiment or document type
+\begin{plain}{Results - Reconstruction error}
+\centering
+\includegraphics[scale=0.6]{figs/results_fig2}
+\end{plain}
+
+\begin{plain}{Results - Held out probability, coherence and unique words}
+\centering
+\includegraphics[scale=0.6]{figs/results_fig5}
 \end{plain}
 
 %-------------------------------------------------%
 \section[Conclusion]{Conclusion}
 \begin{plain}{Summary}
-TODO: Put the paper's conclusion into dot point form
-\end{plain}
-
-\begin{plain}{Comments}
-TODO: Do we need to comment on the paper?\\
-Are there things that we wish they had reported but didn't?\\
-Are there things that we really liked that they reported?\\
-Check the marking guidelines about what exactly we need here\\
+\begin{itemize}
+\p New algorithms for topic recovery have been presented
+\begin{itemize}
+\p Empirical results compare to MCMC
+\p Uses anchor word assumption and Bayes' rule for theoretical and empirical performance improvements
+\end{itemize}
+\p Simple to implement, maintains provable guarantees
+\p Attractive feature: \emph{Running time independent of the size of the corpus} 
+\end{itemize}
 \end{plain}
 
 \begin{plain}{Future Work}
-TODO: They didn't have a future work section but they really should have. We can make one up and maybe comment that they didn't put a future work section
+\begin{itemize}
+\p Use output of algorithms for further optimization
+\p Parallel implementations
+\end{itemize}
 \end{plain}
+
+
+\begin{plain}{Comments}
+\begin{itemize}
+\p Main contribution: algorithms for topic inference with provable guarantees for running time
+\begin{itemize}
+\p Effect: running time effectively independent of corpus size
+\end{itemize}
+\end{itemize}
+\end{plain}
+
 
 \begin{plain}{}
 \begin{center}
@@ -338,7 +377,7 @@ Any questions please email either of us:\\
 \large
 \textbf{Vanush Vaswani}\\
 \normalsize
-vvas****@uni.sydney.edu.au\\
+vvas9619@uni.sydney.edu.au\\
 \vspace{1ex}
 \large
 \textbf{Kristy Hughes}\\

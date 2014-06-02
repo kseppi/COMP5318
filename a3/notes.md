@@ -89,8 +89,43 @@ TODO: expand on this
 Results
 -------
 
+- Methodology overview -
+
+The algorithms that were tested are the original recovery method, the topic recovery method presented in this paper, and a common MCMC based method based on Gibbs sampling of the posterior distribution. The experiments cover various aspects of the algorithms. They generate completely synthetic documents to test the efficiency of each of the recovery algorithms presented. Using two-real world datasets, they generate semi-synthetic corpora using an LDA model to compute the reconstruction error from the true word-topic distributions and the trained model.  For real documents, they use metrics such as held-out probability and coherence to quantify the performance of the model where the true parameters are unavailable.
+
+Two real world datasets were used throughout - a large corpus of NYT article (295,000 documents) and NIPS abstracts (1100 documents)
+
+- Metrics -
+
+The reconstruction error is calculated by comparing the learned word-topic matrix and true matrix A and then evaluating the L1 distance between each pair of topics. Where the true parameters are unknown, they use the held-out probability, by calculating the probability of an unseen document under the learned model. If the model is good, then the probability will be high. If the model is good, then high probability words for a certain topic should co-occur frequently. This is measured by the coherence metric, which has been shown to correlate well with human judgement. Inter-topic similarity gathers the set of the N most probable words and counts how many of those words do not appear in any other topic’s set of N most probable words, thereby measuring the discerning power of a topic under the model. We can summarize this as the number of unique words across topics.
+
+- Results -
+
+The efficiency results show that the Gibbs sampling (MCMC) and RecoverL2 method is linear in corpus size, however, the RecoverKL and Recover algorithms have performance invariant of corpus size. The FastAnchorWords algorithm, described previously, takes less than 6 seconds for all corpora.
+
+- Results -
+
+The reconstruction error of the word-topic matrix for semi-synthetic corpora is now presented. It shows that the L1 error drops significantly as the number of documents in increased, as does the variance represented by the error bars. Also included is the so-called infinite data case, where the ground truth word-topic matrix, having the lowest error. This is significant as it shows that their model of the Q matrix as an approximation to expectation is a good one.
+
+- Results -
+ 
+This chart shows the metrics for real documents, that is, when the true parameters are unknown. The held-out probability is worst for the Recover algorithm, while Gibbs sampling produces the best. However, it has worse performance in coherence and better performance in the number of unique words per topic. 
+
+
 Conclusion
 ----------
+
+- Conclusion -
+
+It is clear from the previous slides that the empirical results compare to common approaches in the literature such as MCMC by Gibbs sampling. These new algorithms for topic recovery use Bayes’ rule. By using Bayes rule to compute the word-topic matrix allows an order-of-magnitude improvement in performance, allowing running time to be independent of the size of the corpus. 
+
+- Future work -
+
+Future work involves using the output of the algorithms as a prior step to further optimization (e.g. combining with MCMC), though they have not found a hybrid that outperforms either method independently. Future parallel implementations have the potential to support web-scale topic inference
+
+- Comments -
+
+This paper improves on topic recovery algorithms by putting a bound on their running time assuming separability assumptions were met. This is better than relying on purely empirical methods because,  as previously mentioned, the amount of data on the internet is increasing at an exponential rate. Technically, we see this paper as useful as it elegantly transforms a difficult probabilistic problem into a simpler geometric one which can be solved with algebraic methods. However, it remains an incremental contribution as it does not change the field of topic modelling, by altering the generative process for example.
 
 - Thanks _
 Well thats it. Thanks for listening to our talk. Usually we would ask for questions but since this is a video talk we cant do that. So instead, if you have any questions please feel free to email either of us at our emails we have here.
