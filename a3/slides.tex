@@ -55,7 +55,7 @@
 \renewcommand*\bibcloseparen{]}
 \addbibresource{slides.bib}
 
-\title{A Practical Algorithm for Topic Modling with Provable Guarantees}
+\title{A Practical Algorithm for Topic Modeling with Provable Guarantees}
 \author[Vanush \& Kristy]{Sanjeev Arora\\
 		Rong Ge\\
 		Yoni Halpern\\
@@ -183,7 +183,7 @@ Aim: Find document-topic matrix
 
 
 %-------------------------------------------------%
-\section[Algo]{Algorithm}
+\section[Algorithm]{Algorithm}
 
 \begin{plain}{Algorithm}
 Input: Corpus $\mathcal{D}$, Number of topics $K$\\
@@ -295,7 +295,10 @@ $$p(w_1 = i | z_1 = k) = \frac{p(z_1 = k | w_1 = i)p(w_1 = i)}{\sum_i{p(z_1=k | 
 %-------------------------------------------------%
 \section[Results]{Experimental Results}
 \begin{plain}{Experiments}
-\includegraphics[scale=0.5]{figs/results_method}
+\begin{center}
+\hspace{-3em}
+\includegraphics[scale=0.7]{figs/results_method}
+\end{center}
 \end{plain}
 
 \begin{plain}{Metrics}
@@ -320,31 +323,35 @@ $$p(w_1 = i | z_1 = k) = \frac{p(z_1 = k | w_1 = i)p(w_1 = i)}{\sum_i{p(z_1=k | 
 %\end{plain}
 
 \begin{plain}{Results - Efficiency}
-\centering
-\includegraphics[scale=0.6]{figs/results_fig1}
+\begin{center}
+\includegraphics[scale=0.7]{figs/results_fig1}
+\end{center}
 \end{plain}
 
 \begin{plain}{Results - Reconstruction error}
-\centering
-\includegraphics[scale=0.6]{figs/results_fig2}
+\begin{center}
+\includegraphics[scale=0.58]{figs/results_fig2}
+\end{center}
 \end{plain}
 
 \begin{plain}{Results - Held out probability, coherence and unique words}
-\centering
+\begin{center}
 \includegraphics[scale=0.6]{figs/results_fig5}
+\end{center}
 \end{plain}
 
 %-------------------------------------------------%
 \section[Conclusion]{Conclusion}
 \begin{plain}{Summary}
 \begin{itemize}
-\p New algorithms for topic recovery have been presented
-\begin{itemize}
-\p Empirical results compare to MCMC
-\p Uses anchor word assumption and Bayes' rule for theoretical and empirical performance improvements
-\end{itemize}
+\p New algorithms for topic recovery
+	\begin{itemize}
+		\p Empirical results comparable to MCMC
+		\p Anchor word assumption
+		\p Bayes' rule $\rightarrow$ empirical performance improvements
+	\end{itemize}
 \p Simple to implement, maintains provable guarantees
-\p Attractive feature: \emph{Running time independent of the size of the corpus} 
+\p Attractive feature: \emph{Running time independent of corpus size} 
 \end{itemize}
 \end{plain}
 
@@ -358,10 +365,9 @@ $$p(w_1 = i | z_1 = k) = \frac{p(z_1 = k | w_1 = i)p(w_1 = i)}{\sum_i{p(z_1=k | 
 
 \begin{plain}{Comments}
 \begin{itemize}
-\p Main contribution: algorithms for topic inference with provable guarantees for running time
-\begin{itemize}
-\p Effect: running time effectively independent of corpus size
-\end{itemize}
+\p Theory is consistent with results: large performance improvements
+\p No obvious inconsistencies
+\p Incremental contrbution
 \end{itemize}
 \end{plain}
 
